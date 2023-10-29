@@ -23,8 +23,6 @@ struct New_loan_View: View {
             
             VStack(spacing:0){
                 
-                
-                
                 VStack(alignment:.leading){
                     
                     Text("Fill in the following options")
@@ -135,9 +133,8 @@ struct New_loan_View: View {
                 }
                 
             }
-            
-            
         }
+        
     }
 }
 

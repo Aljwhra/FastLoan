@@ -25,12 +25,12 @@ struct Home_View: View {
     
     var body: some View {
         NavigationStack{
-            ZStack {
+            VStack(spacing:0){
                 
-                backgroundCustom()
                 
-                ScrollView{
-                    
+                
+                //  ScrollView{
+                VStack{
                     // circular cage
                     ZStack {
                         // Track circle & background
@@ -73,27 +73,22 @@ struct Home_View: View {
                         }
                     }
                     
-                    
-                    VStack(spacing: 15){
-                        
-                        HStack{
-                            Text("More details about your current lona")
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.leading)
-                        } .padding(.top,50)
-                        
-                        ForEach(items, id: \.1) { item in
-                            MyList(title:item.0, num:item.1, color: item.2)
-                        }
-                        
-                        
-                    }
-                    .padding()
-                    .background(.mygray)
-                    .frame(width: 400, height: 400)
-                    
-                    
+                }
+                .frame(maxWidth:.infinity,maxHeight: .infinity)
+                .background(
                     ZStack{
+                        Rectangle()
+                        
+                        LinearGradient(gradient: Gradient(colors: [Color.purple1,Color.purple2]), startPoint: .top, endPoint: .bottom)
+                    }
+                        .ignoresSafeArea()
+                )
+                
+                VStack(spacing: 15){
+                    
+                    
+                    
+                    HStack{
                         
                         VStack{
                             Image("pig2")
@@ -110,7 +105,7 @@ struct Home_View: View {
                                 .frame(width: 140, height: 140)
                             
                                 .foregroundColor(Color.white)
-                        )  .offset(x:-80)
+                        )  .offset(x:-30)
                         
                         
                         VStack(spacing: 10){
@@ -127,41 +122,68 @@ struct Home_View: View {
                             
                                 .foregroundColor(Color.white)
                         )
-                        .offset(x:80)
+                        .offset(x:30)
                         
                         
                     }
-                    .offset(y:-400)
+                    .offset(y:-50)
                     
-                    
-                }
-                
-                
-            }
-            .navigationBarBackButtonHidden(true) // Hide the back button
-            .toolbar{
-                ToolbarItem(placement: .topBarLeading){
-                    HStack(spacing: 117){
-                        Button(action: {}){
-                            Image(systemName: "person.fill")
-                        }
-                        Text("Home")
-                            .foregroundColor(.white)
-                            .font(.title3)
-                        Button(action: {}){
-                            Image(systemName: "bell.fill")
-                        }
+                    HStack{
+                        Text("More details about your current lona")
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.leading)
                     }
+                    
+                    ForEach(items, id: \.1) { item in
+                        MyList(title:item.0, num:item.1, color: item.2)
+                    }
+                    
+                    
+                    
+                    
                 }
+                .padding()
+                .frame(maxWidth:.infinity,maxHeight: .infinity)
+                .background(
+                    ZStack{
+                        Rectangle()
+                        Color.mygray
+                    }
+                        .ignoresSafeArea()
+                )
+                
+                
+                
+                
                 
             }
-            
-            
             
             
         }
+        .navigationBarBackButtonHidden(true) // Hide the back button
+        .toolbar{
+            ToolbarItem(placement: .topBarLeading){
+                HStack(spacing: 117){
+                    Button(action: {}){
+                        Image(systemName: "person.fill")
+                    }
+                    Text("Home")
+                        .foregroundColor(.white)
+                        .font(.title3)
+                    Button(action: {}){
+                        Image(systemName: "bell.fill")
+                    }
+                }
+            }
+            
+        }
+        
+        
+        
+        
     }
 }
+
 
 
 
